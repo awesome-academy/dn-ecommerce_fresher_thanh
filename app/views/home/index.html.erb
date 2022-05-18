@@ -5,7 +5,21 @@
           <span><%= t "page.home.list_products" %></span>
         </h2>
     </div>
-    <div class="row">
+    <div class="row" style="padding: 0 15px;">
+      <div class="col-12 pb-1">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+          <%= search_form_for @search, url: root_path, method: :get, remote: true do |f| %>
+            <div class="input-group">
+              <%= f.text_field :price_gteq, class: "form-control", placeholder: t("global.price_gteq")%>
+              <%= f.text_field :price_lteq, class: "form-control", placeholder: t("global.price_lteq")%>
+              <%= f.hidden_field :category_name_cont, class: "form-control"%>
+              <%= f.submit t("global.search") %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="row container-product">
       <%= render @products %>
     </div>
     <%== pagy_nav(@pagy)%>

@@ -6,6 +6,11 @@
         <h4><%= t "menu.categories" %></h4>
         <i class="fa fa-angle-down"></i>
       </a>
+      <nav class="collapse navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0" id="navbar-vertical">
+        <div class="navbar-nav w-100 overflow-hidden">
+          <%= render partial: "layouts/category", collection: @categories, as: :category %>
+        </div>
+      </nav>
     </div>
     <div class="col-lg-9">
       <nav class="navbar py-3">

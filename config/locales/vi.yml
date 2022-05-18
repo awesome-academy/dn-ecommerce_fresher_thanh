@@ -81,6 +81,8 @@ vi:
       button: "Đăng nhập"
     register: "Đăng ký"
     operation: "Thao tác"
+    price_gteq: "Giá từ"
+    price_lteq: "Đến giá"
 
   menu:
     categories: "Danh mục"

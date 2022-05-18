@@ -78,6 +78,8 @@ en:
       button: "Log in"
     register: "Register"
     operation: "Operation"
+    price_gteq: "Price from"
+    price_lteq: "To the price"
 
   menu:
     categories: "Categories"

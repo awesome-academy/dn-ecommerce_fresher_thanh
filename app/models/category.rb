@@ -5,4 +5,6 @@ class Category < ApplicationRecord
   belongs_to :parent, class_name: Category.name, optional: true
 
   validates :name, presence: true
+
+  scope :newest, ->{order created_at: :desc}
 end

@@ -4,10 +4,11 @@
       <%= link_to(raw("<h1 class='text_logo'><span class='text-primary border'>T</span>Shop</h1>"), root_path) %>
     </div>
     <div class="col-lg-6 col-6">
-      <%= form_tag do %>
+      <%= search_form_for @search, url: root_path, method: :get do |f| %>
         <div class="input-group">
-          <%= text_field_tag :search, "", class: "form-control" %>
-          <%= submit_tag t("global.search") %>
+          <%= f.text_field :product_cont, class: "form-control"%>
+          <%= f.hidden_field :category_name_cont, class: "form-control"%>
+          <%= f.submit t("global.search") %>
         </div>
       <% end %>
     </div>

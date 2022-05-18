@@ -1,0 +1,4 @@
+<%= search_form_for @search, url: root_path, method: :get do |f| %>
+  <%= f.hidden_field :category_name_cont, class: "form-control", value: category.name %>
+  <%= f.submit category.name, class: "category-item" %>
+<% end %>

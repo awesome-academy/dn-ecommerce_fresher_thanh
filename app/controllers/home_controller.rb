@@ -1,5 +1,10 @@
 class HomeController < ApplicationController
   def index
-    @pagy, @products = pagy(Product.newest, items: Settings.pagy_item_8)
+    products = @search.result.includes(:category).newest
+    @pagy, @products = pagy(products, items: Settings.pagy_item_8)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 end

@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
   include Pagy::Backend
   rescue_from Pagy::OverflowError, with: :redirect_to_last_page
 
-  before_action :set_locale, :init_cart, :load_cart
+  before_action :set_locale, :init_cart, :load_cart, :load_categories,
+                :query_product
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -44,5 +45,13 @@ class ApplicationController < ActionController::Base
 
   def redirect_to_last_page exception
     redirect_to url_for(page: exception.pagy.last)
+  end
+
+  def load_categories
+    @categories = Category.newest
+  end
+
+  def query_product
+    @search = Product.ransack(params[:q])
   end
 end

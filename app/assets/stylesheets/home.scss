@@ -82,11 +82,13 @@
   .dropdown-menu {
     left: -50px;
   }
-  .dropdown-item {
-    display: block;
-    padding: 0.25rem 1.5rem;
-  }
 }
+
+.dropdown-item {
+  display: block;
+  padding: 0.25rem 1.5rem;
+}
+
 .navbar-main {
   display: flex;
 }
@@ -161,4 +163,13 @@
 .badge-received {
   background-color: #f0d8ff !important;
   color: #453008 !important;
+}
+.category-item {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align-last: left;
+  &:hover {
+    color: #337ab7;
+  }
 }
