@@ -1,5 +1,4 @@
 require "rails_helper"
-include SessionsHelper
 
 RSpec.describe Admin::ProductsController, type: :controller do
   let!(:admin) {FactoryBot.create :user, role: 1}
@@ -13,7 +12,7 @@ RSpec.describe Admin::ProductsController, type: :controller do
 
     context "when admin logged" do
       before do
-        log_in admin
+        sign_in admin
         get :index
       end
 

@@ -1,5 +1,4 @@
 require "rails_helper"
-include SessionsHelper
 
 RSpec.describe AdminController, type: :controller do
   let!(:user) {FactoryBot.create :user}
@@ -8,7 +7,7 @@ RSpec.describe AdminController, type: :controller do
 
     context "when not admin login" do
       before do
-        log_in user
+        sign_in user
         get :index
       end
 

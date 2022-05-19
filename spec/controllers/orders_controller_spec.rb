@@ -1,5 +1,4 @@
 require "rails_helper"
-include SessionsHelper
 
 RSpec.describe OrdersController, type: :controller do
   let!(:user) {FactoryBot.create :user}
@@ -14,7 +13,7 @@ RSpec.describe OrdersController, type: :controller do
 
     context "when user logged" do
       before do
-        log_in user
+        sign_in user
         get :index
       end
 
@@ -41,7 +40,7 @@ RSpec.describe OrdersController, type: :controller do
 
     context "when user logged" do
       before do
-        log_in user
+        sign_in user
         session[:cart] = {product_1.id.to_s => 1, product_2.id.to_s => 2}
         post :create, params: {
           order: {name: "test", phone: "0123456789", address: "test"}
@@ -49,7 +48,7 @@ RSpec.describe OrdersController, type: :controller do
       end
 
       it "build order success" do
-        expect(assigns(:order)).to eq(current_user.orders.last)
+        expect(assigns(:order)).to eq(subject.current_user.orders.last)
       end
 
       context "order save success" do
@@ -92,7 +91,7 @@ RSpec.describe OrdersController, type: :controller do
 
     context "when user logged" do
       before do
-        log_in user
+        sign_in user
       end
 
       context "find order by id" do

@@ -1,5 +1,4 @@
 require "rails_helper"
-include SessionsHelper
 
 RSpec.describe Admin::OrdersController, type: :controller do
   let!(:admin) {FactoryBot.create :user, role: 1}
@@ -14,7 +13,7 @@ RSpec.describe Admin::OrdersController, type: :controller do
 
     context "when not admin logged in" do
       before do
-        log_in user
+        sign_in user
         get :index
       end
 
@@ -29,7 +28,7 @@ RSpec.describe Admin::OrdersController, type: :controller do
 
     context "when admin logged" do
       before do
-        log_in admin
+        sign_in admin
         get :index
       end
 
@@ -63,7 +62,7 @@ RSpec.describe Admin::OrdersController, type: :controller do
 
     context "when admin logged" do
       before do
-        log_in admin
+        sign_in admin
       end
 
       context "find order by id" do
@@ -133,7 +132,7 @@ RSpec.describe Admin::OrdersController, type: :controller do
 
     context "when admin logged" do
       before do
-        log_in admin
+        sign_in admin
       end
 
       context "find order by id" do
