@@ -1,4 +1,7 @@
 vi:
+  unauthorized:
+    manage:
+      all: "Bạn không có quyền truy cập đến trang này"
   activerecord:
     attributes:
       user:

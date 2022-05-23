@@ -1,4 +1,7 @@
 en:
+  unauthorized:
+    manage:
+      all: "You are not authorized to this page"
   activerecord:
     attributes:
       user:

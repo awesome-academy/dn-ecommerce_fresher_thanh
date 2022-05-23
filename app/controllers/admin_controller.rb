@@ -1,15 +1,14 @@
 class AdminController < ApplicationController
   layout "admin"
-  before_action :authenticate_user!, :check_admin
+  before_action :store_location, :authenticate_user!
+  authorize_resource
 
   def index; end
 
-  private
-
-  def check_admin
-    return if current_user.admin?
-
-    flash[:danger] = t "global.danger.not_admin"
-    redirect_to root_path
+  rescue_from CanCan::AccessDenied do |exception|
+    respond_to do |format|
+      format.json
+      format.html{redirect_to root_path, alert: exception.message}
+    end
   end
 end
